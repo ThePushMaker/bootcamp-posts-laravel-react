@@ -35,7 +35,7 @@ const Post = ({post}) => {
               <span className='text-white'>{post.user.name}</span>
               <small className='ml-2 text-sm text-white'>{dayjs(post.created_at).fromNow()}</small>
               {/* si la fecha de creación es distinta a la fecha de actualización, con doble ampersan (&&) vamos a hacer que tenga esa marca de editado */}
-              {post.created_at !== post.update && <small className='text-sm text-gray-600'>&middot; edited</small>}
+              {post.created_at !== post.updated_at && <small className='text-sm text-gray-600'>&middot; edited</small>}
             </div>
               {/* si el id  del post es igual a quien está autentiado*/}
               { post.user.id === auth.user.id &&
@@ -78,6 +78,19 @@ const Post = ({post}) => {
 
               </textarea>
               <InputError message={errors.message} className='mt-2'/>
+              <div className='space-x-2'>
+                <PrimaryButton 
+                  className='mt-4'
+                >
+                  Save
+                </PrimaryButton>
+                <buttom 
+                  className='inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150' 
+                  onClick={()=>setEditing(false) && reset()}
+                >
+                  Cancel
+                </buttom>
+              </div>
             </form>
             : (
                 <>
