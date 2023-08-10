@@ -105,6 +105,12 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        // delete hace referencia al metodo que se encuentra en post policies, las politicas que habiamos creado
+        // cuando ponemos el metodo autorize estamos hacindo referencia al metodo delete que se encuentra en las politicas de post 
+        $this->authorize('delete', $post);
+        
+        $post->delete();
+
+        return redirect(route('posts.index'));
     }
 }

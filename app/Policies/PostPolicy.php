@@ -66,7 +66,9 @@ class PostPolicy
      */
     public function delete(User $user, Post $post)
     {
-        //
+        // return $post->user()->is($user);
+        // Esto hace referencia a lo mismo que update, esto es para no escribir de nuevo lo mismo de arriba, le pasamos el usuario y el post que vamos a eliminar
+        return $this->update($user, $post);
     }
 
     /**

@@ -55,6 +55,14 @@ const Post = ({post}) => {
                       >
                         Edit
                       </button>
+                      {/* Hacemos que la ruta apunte directamente al controlador */}
+                      <Dropdown.Link
+                        as="focus"
+                        href={route('posts.destroy', post.id)}
+                        method='delete'
+                      >
+                        Delete
+                      </Dropdown.Link>
                     </Dropdown.Content>
                 </Dropdown>
               }
